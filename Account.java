@@ -1,46 +1,45 @@
-package OOP2;
+package OOP2Lab;
 import java.util.Scanner;
-
-public class Account 
-{
-	private String name;
+public class Account {
 	private double balance;
+	private String ownerName;
 	
-	public Account(String name, double balance) 
+	public void add(double amount) 
 	{
-		this.name = name;
-		this.balance = balance;
+		balance += amount;
 	}
-	public void deposit(double balance) 
+	public void withdraw(double amount) 
 	{
-		this.balance+=balance;
+		Scanner sc = new Scanner(System.in);
+		String password ="1234";
+		
+		for(int i=1;i<=4;i++) 
+		{ if(i==4) 
+		{
+			System.out.println("Hesabını engellendi!");
+				break;
+		}else {
+			System.out.println("Please enter the 4-digit pass");
+			
+			if(password.equals(sc.next())) 
+			{
+			balance -= amount;
+			}else
+			System.out.println("Wrong pass");
+			
+			}
+		}
 	}
-	public double getBalance()
-	{	// private olan balanceyi method ile görüntülüyorum.
+	public double getBalance() 
+	{
 		return balance;
 	}
-	public void setBalance(double amount)
+	public void setOwnerName(String name) 
 	{
-		String sifre ="1234";
-		System.out.println("please enter the password");
-		Scanner kullaniciGiris = new Scanner(System.in);
-		if (sifre.equals(kullaniciGiris.next()))
-			{
-				if(amount<=this.balance) 
-				{
-				this.balance -= amount;
-				}
-					
-			}
-		
+		this.ownerName = name;
 	}
-	public void setName(String name)
-	{
-		this.name = name;
-	}
-	public String getName()
-	{
-		return name;
+	public String getOwnerName() {
+		return ownerName;
 	}
 
 }
